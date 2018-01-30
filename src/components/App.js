@@ -1,16 +1,22 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, {Component} from 'react';
+import {Route, Redirect, Switch} from 'react-router-dom';
+import HomePage from '../pages/home/Home.page';
+import NotFoundPage from '../pages/notFound/NotFound.page';
+import './App.scss';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <Switch>
+              <Route
+                  key="Pagina home"
+                  exact path="/"
+                  component={HomePage}
+              />
+              <Route path='/not-found' component={NotFoundPage} />
+              <Redirect to="/not-found" />
+          </Switch>
       </div>
     );
   }
